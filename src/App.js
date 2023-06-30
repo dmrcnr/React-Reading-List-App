@@ -30,20 +30,24 @@ function App() {
     }
   };
 
-  const deleteBookById = (id) => {
-    const updatedBooks = books.filter((book) => {
-      return book.id !== id;
-    });
+  const deleteBookById = async (id) => {
+    const response = await axios.delete(`http://localhost:3001/books/${id}`);
+    if (response.status === 200) {
+      const updatedBooks = books.filter((book) => {
+        return book.id !== id;
+      });
 
-    setBooks(updatedBooks);
+      setBooks(updatedBooks);
+    }
   };
 
   const createBook = async (title) => {
     const response = await axios.post("http://localhost:3001/books", {
       title,
     });
-
-    setBooks([...books, response.data]);
+    if (response.status === 201) {
+      setBooks([...books, response.data]);
+    }
   };
 
   return (
