@@ -1,5 +1,7 @@
 # React - Reading List App
 
+- This branch uses context system of React.
+
 ![React Reading List App Gif](./react-reading-list-app.gif)
 
 - Add, edit and delete an item (book).
